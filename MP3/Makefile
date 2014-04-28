@@ -9,6 +9,7 @@ all: $(TARGETS)
 
 clean:
 	        rm -f $(TARGETS)
+		rm -rf *.dSYM
 
 reliable_receiver: receiver_main.c
 	        $(CC) $(CCOPTS) -o reliable_receiver receiver_main.c
