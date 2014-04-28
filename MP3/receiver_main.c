@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void reliablyReceive(unsigned short int myUDPport, char* destinationFile);
+void reliablyReceive(unsigned short int myUDPport, char* destinationFile)
+{
+	return;
+}
 
 int main(int argc, char** argv)
 {

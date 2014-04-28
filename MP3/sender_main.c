@@ -1,7 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void reliablyTransfer(char* hostname, unsigned short int hostUDPport, char* filename, unsigned long long int bytesToTransfer);
+/**
+ *	Extracts first bytesToTransfer from filename
+ */
+char * getFileContents(char * filename, unsigned long long int bytesToTransfer)
+{
+	char * buffer = 0;
+	FILE * file = fopen(filename, "rb");
+
+	if(file)
+	{
+		fseek(file, 0, SEEK_SET);
+		buffer = malloc(bytesToTransfer);
+		if(buffer)
+		{
+			fread(buffer, 1, bytesToTransfer, file);
+		}
+		fclose(file);
+	}
+
+	return buffer;
+}
+
+void reliablyTransfer(char* hostname, unsigned short int hostUDPport, char* filename, unsigned long long int bytesToTransfer)
+{
+	char * data = getFileContents(filename, bytesToTransfer);
+
+	if(data)
+	{
+
+	}
+	else
+	{
+		perror("Error while reading contents of the given file\n");
+	}
+}
 
 int main(int argc, char** argv)
 {
